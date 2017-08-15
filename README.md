@@ -80,3 +80,24 @@ Save the file (Ctrl+O), close nano (Ctrl+X) and reboot your Pi:
 ```
 sudo reboot
 ```
+
+Customizing the Web Interface
+=============================
+
+In general, you should be done at this point. The web interface allows you to query information about your internet and VPN connections, and you can connect to a wifi network. The web interface is configured not to offer your Pi's own wifi network for connection. This is done in ~/wiconfig/app/templates/index.html in line 64:
+
+```
+{% if network.ssid != "PBox" %}
+```
+
+I named my Pi's wifi network "PBox". If you're using a different name just change this line.
+
+The web interface also contains a possibility to change the VPN configuration. Many VPN companies provide configuration files that give you an IP address in your country of choice. So it might be a good idea to have some of these files on your Pi to be able to select the suitable one on the fly.
+
+Copy these files (typically \*.ovpn files) to the directory /home/pi/vpnconfig or a subfolder to this directory. The web interface will offer these files for selection, and it will reflect the directory structure so it's easier for you to find the right file. (E.g., you might have one subfolder for each target country.)
+
+When selected, the web interface service will copy the selected file to /etc/openvpn/client.conf. In case you need credentials for your connections, these credentials need to reside in the /etc/openvpn/ folder, and your \*.ovpn file needs to point to the file containing the credentials, such as
+
+```
+auth-user-pass /etc/openvpn/pwd.txt
+```
