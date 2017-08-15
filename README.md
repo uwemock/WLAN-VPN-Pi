@@ -44,6 +44,7 @@ Next, we set up the Flask web server inside a Python virtual environment plus th
 
 ```
 cd /home/pi
+mkdir /home/pi/vpnconfig
 virtualenv wiconfig
 . wiconfig/bin/activate
 pip install Flask
