@@ -99,7 +99,7 @@ I named my Pi's wifi network "PBox". If you're using a different name just chang
 
 The web interface also contains a possibility to change the VPN configuration. Many VPN companies provide configuration files that give you an IP address in your country of choice. So it might be a good idea to have some of these files on your Pi to be able to select the suitable one on the fly.
 
-Copy these files (typically \*.ovpn files) to the directory /home/pi/vpnconfig or a subfolder to this directory. The web interface will offer these files for selection, and it will reflect the directory structure so it's easier for you to find the right file. (E.g., you might have one subfolder for each target country.)
+Copy these files (typically \*.ovpn files) to the directory /home/pi/vpnconfig or a subfolder to this directory. The web interface will offer these files for selection, and it will reflect the directory structure so it's easier for you to find the right file. (E.g., you might have one subfolder for each target country.) The folder and file names may not contain special (mostly country specific) characters.
 
 When selected, the web interface service will copy the selected file to /etc/openvpn/client.conf. In case you need credentials for your connections, these credentials need to reside in the /etc/openvpn/ folder, and your \*.ovpn file needs to point to the file containing the credentials, such as
 
