@@ -81,6 +81,11 @@ Save the file (Ctrl+O), close nano (Ctrl+X) and reboot your Pi:
 sudo reboot
 ```
 
+Once you're connected to your Pi's wifi, you should be able to access the web interface using the following URL:
+
+http://192.168.55.1:5000
+
+
 Customizing the Web Interface
 =============================
 
