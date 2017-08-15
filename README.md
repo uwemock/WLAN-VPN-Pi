@@ -106,3 +106,14 @@ When selected, the web interface service will copy the selected file to /etc/ope
 ```
 auth-user-pass /etc/openvpn/pwd.txt
 ```
+
+Recommended stuff
+=================
+
+I recommend installing the **haveged** package on the Raspberry Pi. This will speed up all the encryption stuff tremendeously.
+
+```
+sudo apt-get install haveged
+```
+
+In case you're using Android devices with your mobile VPN router, you might find the [Hot Button SSH Command Widget](https://play.google.com/store/apps/details?id=crosien.HotButton) useful. I use it to shutdown or reboot my Pi from the mobile device, without having to open the web interface first. In the typical use case, I will be connected to my Pi's wifi anyway, so the widget can send the shutdown or reboot command by SSH as well.
