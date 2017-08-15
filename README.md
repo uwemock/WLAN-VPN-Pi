@@ -24,3 +24,58 @@ NOTE THAT THE USE OF **THIS** OPTION IS STRONGLY DISCOURAGED AS CURRENT KERNELS 
 Have a look at the project's wiki for installation and use instructions: 
 
 https://github.com/martinsauter/WLAN-VPN-Pi/wiki
+
+Setting up the web interface
+============================
+
+After setting up your Raspberry Pi as shown in Matin Sauter's excellent tutorial, it's time to enhance your mobile VPN router with a fancy web configuration interface.
+
+I adopted an idea by Daniel S. Pierson and extended it to fit my needs. The original paper can be downloaded at http://digitalcommons.calpoly.edu/cscsp/83/.
+
+First of all, mae sure you have followed Martin Sauter's instructions to set up the whole VPN stuff. Then, follow these steps:
+
+Log on to your Raspberry Pi and install Python and Virtualenv (I assume you're doing all this as user "pi"):
+
+```
+sudo apt-get install python-dev python-virtualenv
+```
+
+Next, we set up the Flask web server inside a Python virtual environment plus the necessary packages:
+
+```
+cd /home/pi
+virtualenv wiconfig
+. wiconfig/bin/activate
+pip install Flask
+pip install netifaces
+pip install wifi
+```
+
+Now download the file wiconfig.tar.gz to pi's home directory and extract its contents:
+
+```
+tar -xzf wiconfig.tar.gz /home/pi
+```
+
+This file contains all of the web interface files, i.e. the HTML template, images and scripts, CSS files and the Python script that does all the magic.
+
+Finally, we need to activate the web server at system startup.
+
+```
+sudo nano /etc/rc.local
+```
+
+Add the following lines to the end of the file, right before the line that reads "exit 0":
+
+```
+# start webinterface
+cd /home/pi
+. wiconfig/bin/activate
+python wiconfig/run.py &
+```
+
+Save the file (Ctrl+O), close nano (Ctrl+X) and reboot your Pi:
+
+```
+sudo reboot
+```
