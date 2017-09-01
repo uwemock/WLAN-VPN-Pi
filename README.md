@@ -89,13 +89,13 @@ http://192.168.55.1:5000
 Customizing the Web Interface
 =============================
 
-In general, you should be done at this point. The web interface allows you to query information about your internet and VPN connections, and you can connect to a wifi network. The web interface is configured not to offer your Pi's own wifi network for connection. This is done in ~/wiconfig/app/templates/index.html in line 64:
+In general, you should be done at this point. The web interface allows you to query information about your internet and VPN connections, and you can connect to a wifi network. The web interface is configured not to offer your Pi's own wifi network for connection. This is done in ~/wiconfig/app/templates/index.html in line 81:
 
 ```
-{% if network.ssid != "PBox" %}
+{% if network.ssid != "Pi_AP" %}
 ```
 
-I named my Pi's wifi network "PBox". If you're using a different name just change this line.
+According to Martin Sauter's instructions, the Pi's network is named "Pi_AP". If you're using a different name just change this line.
 
 The web interface also contains a possibility to change the VPN configuration. Many VPN companies provide configuration files that give you an IP address in your country of choice. So it might be a good idea to have some of these files on your Pi to be able to select the suitable one on the fly.
 
